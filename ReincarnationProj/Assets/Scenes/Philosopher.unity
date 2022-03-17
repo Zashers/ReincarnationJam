@@ -923,6 +923,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 940672409}
     m_Modifications:
     - target: {fileID: 1716064750114120488, guid: a9f117dd7cfe28042941385b347d7c24, type: 3}
+      propertyPath: m_Size.y
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1716064750114120488, guid: a9f117dd7cfe28042941385b347d7c24, type: 3}
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
@@ -985,6 +989,10 @@ PrefabInstance:
     - target: {fileID: 3873114248105996628, guid: a9f117dd7cfe28042941385b347d7c24, type: 3}
       propertyPath: m_Name
       value: DownArrow
+      objectReference: {fileID: 0}
+    - target: {fileID: 3873114248105996628, guid: a9f117dd7cfe28042941385b347d7c24, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1526860142, guid: a9f117dd7cfe28042941385b347d7c24, type: 3}
@@ -1061,6 +1069,10 @@ PrefabInstance:
       value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 6041320502079502702, guid: f380674be52ccdd4cb20011a3f5142d2, type: 3}
+      propertyPath: m_Size.x
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6041320502079502702, guid: f380674be52ccdd4cb20011a3f5142d2, type: 3}
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
@@ -1085,6 +1097,10 @@ PrefabInstance:
     - target: {fileID: 4757893131627937187, guid: d549eaef1d052894f8456b62961d543a, type: 3}
       propertyPath: m_Name
       value: UpArrow
+      objectReference: {fileID: 0}
+    - target: {fileID: 5032195305530534078, guid: d549eaef1d052894f8456b62961d543a, type: 3}
+      propertyPath: m_Size.y
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 5032195305530534078, guid: d549eaef1d052894f8456b62961d543a, type: 3}
       propertyPath: m_IsTrigger
@@ -1207,6 +1223,10 @@ PrefabInstance:
     - target: {fileID: 4474129048512642234, guid: 4d69a7abace48884ea1d96d4d6c1589e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7653276424380308609, guid: 4d69a7abace48884ea1d96d4d6c1589e, type: 3}
+      propertyPath: m_Size.x
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 7653276424380308609, guid: 4d69a7abace48884ea1d96d4d6c1589e, type: 3}
       propertyPath: m_IsTrigger

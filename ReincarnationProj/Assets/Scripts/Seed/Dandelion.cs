@@ -16,6 +16,7 @@ public class Dandelion : MonoBehaviour
     float Duration = 2f;
     Vector2 startSpot;
 
+    bool locked;
     void Start()
     {
         pop = true;
@@ -28,17 +29,18 @@ public class Dandelion : MonoBehaviour
         if (pop) {
             pop = false;
             Instantiate(seed, transform.position, Quaternion.identity);
-            moveLanding();
+            landSpot = Random.Range(-6, 6);
+            startSpot = landing.transform.position;
+            print(landing.transform.position.x);
+            print(landSpot);
+            elapsedTime = 0;
         }
-    }
-    void moveLanding() {
-        landSpot = Random.Range(0, 12);
-        startSpot = landing.transform.position;
-        while (landing.transform.position.x != landSpot)
-        {
+        if (landing.transform.position.x != landSpot)
+        {       
             elapsedTime += Time.deltaTime;
             float x = Mathf.Lerp(startSpot.x, landSpot, curve.Evaluate(elapsedTime / Duration));
             landing.transform.position = new Vector2(x, landing.transform.position.y);
         }
+
     }
 }
