@@ -11,6 +11,7 @@ public class Salmon : MonoBehaviour
     float x,y;
 
     int i = 1;
+    int strokes = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +24,10 @@ public class Salmon : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.UpArrow)) {
             y += power;
+            strokes++;
+            if ((strokes % 2) == 0) {
+                transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+            }
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow)) {
             if (i!=0) {
@@ -41,6 +46,10 @@ public class Salmon : MonoBehaviour
         y -= gravity * Time.deltaTime;
         
         transform.position = new Vector2(x, y);
+
+        if (transform.position.y >= 5) {
+            StartCoroutine("LoadPh");
+        }
     }
 
     IEnumerator LoadSeed() {
@@ -53,14 +62,13 @@ public class Salmon : MonoBehaviour
         yield return new WaitForSeconds(1);
         SceneManager.LoadScene("Philosopher");
     }
-    private void OnTriggerEnter(Collider collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
+        print(collision.gameObject.name);
         if (collision.gameObject.tag == "Rock")
         {
             StartCoroutine("LoadSeed");
         }
-        else {
-            SceneManager.LoadScene("Philosopher");
-        }
+        
     }
 }
