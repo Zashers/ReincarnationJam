@@ -47,8 +47,9 @@ public class SeedBehaviour : MonoBehaviour
         }
         
         if (move) {
-            y -= gravity * (Time.time - dand.offsetTime) * .001f;
+            y -= gravity * (Time.timeSinceLevelLoad - dand.offsetTime) * .001f;
             x += (Input.GetAxis("Horizontal") * speed * Time.deltaTime) + wind;
+            x = Mathf.Clamp(x, -5.7f, 5.3f);
             transform.position = new Vector2(x, y);
         }
 
@@ -68,14 +69,16 @@ public class SeedBehaviour : MonoBehaviour
         yield return new WaitForSeconds(1);
         SceneManager.LoadScene("Salmon");
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "landing"){
-            
+        if (other.gameObject.tag == "landing")
+        {
+
             SceneManager.LoadScene("Salmon");
         }
-        else{
-            dand.offsetTime = Time.time;
+        else if (other.gameObject.tag == "Water")
+        {
+            dand.offsetTime = Time.timeSinceLevelLoad;
             dand.pop = true;
             Destroy(gameObject);
         }

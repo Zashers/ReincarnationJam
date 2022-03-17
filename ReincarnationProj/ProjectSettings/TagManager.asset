@@ -14,6 +14,7 @@ TagManager:
   - landing
   - Top
   - Rock
+  - Water
   layers:
   - Default
   - TransparentFX
@@ -50,4 +51,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 2808416773
+    locked: 0
+  - name: Tertiary
+    uniqueID: 1104035595
+    locked: 0
+  - name: Secondary
+    uniqueID: 660465333
+    locked: 0
+  - name: Primary
+    uniqueID: 662086391
     locked: 0

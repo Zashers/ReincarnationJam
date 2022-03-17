@@ -20,7 +20,7 @@ public class Dandelion : MonoBehaviour
     void Start()
     {
         pop = true;
-        landing = GameObject.Find("Landing");
+        landing = GameObject.Find("Rock");
     }
 
     // Update is called once per frame
@@ -29,7 +29,7 @@ public class Dandelion : MonoBehaviour
         if (pop) {
             pop = false;
             Instantiate(seed, transform.position, Quaternion.identity);
-            landSpot = Random.Range(-6, 6);
+            landSpot = Random.Range(-5.5f, 5.5f);
             startSpot = landing.transform.position;
             print(landing.transform.position.x);
             print(landSpot);
