@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class SeedBehaviour : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -13,7 +13,7 @@ public class SeedBehaviour : MonoBehaviour
     private Vector3 startPos;
 
     public AnimationCurve curve;
-
+  
     float x, y;
     float wind, oldWind, newWind;
     float desiredTime = 1;
@@ -21,6 +21,7 @@ public class SeedBehaviour : MonoBehaviour
 
     bool move = false;
     bool locked = false;
+    bool change = false;
     void Start()
     {
         StartCoroutine("Wind");
@@ -58,12 +59,27 @@ public class SeedBehaviour : MonoBehaviour
         float t = Random.Range(.5f, 2);
         wind = Mathf.Lerp(oldWind, newWind, curve.Evaluate(t));
         yield return new WaitForSeconds(t+.1f);
+        oldWind = newWind;
         StartCoroutine("Wind");    
+    }
+
+    IEnumerator Change()
+    {
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene("Salmon");
     }
     private void OnTriggerEnter(Collider other)
     {
-        dand.offsetTime = Time.time;
-        dand.pop = true;
-        Destroy(gameObject);
+        if (other.gameObject.tag == "landing"){
+            
+            SceneManager.LoadScene("Salmon");
+        }
+        else{
+            dand.offsetTime = Time.time;
+            dand.pop = true;
+            Destroy(gameObject);
+        }
     }
+
+   
 }

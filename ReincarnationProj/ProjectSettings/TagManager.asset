@@ -11,6 +11,9 @@ TagManager:
   - ExDown
   - dc
   - target
+  - landing
+  - Top
+  - Rock
   layers:
   - Default
   - TransparentFX

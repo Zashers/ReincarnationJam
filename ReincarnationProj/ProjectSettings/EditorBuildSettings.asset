@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Seedling.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Salmon.unity
+    guid: e8df4cc84d7e6f348a9f060521d74857
+  - enabled: 1
+    path: Assets/Scenes/Philosopher.unity
+    guid: 9ca8a201fe26c584582e030227efa3e2
   m_configObjects: {}
