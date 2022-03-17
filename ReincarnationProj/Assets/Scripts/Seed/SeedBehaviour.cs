@@ -9,25 +9,57 @@ public class SeedBehaviour : MonoBehaviour
     public Dandelion dand;
     
     public float gravity, speed;
-       
-    float y = 0;
-    float x = 0;
+    public GameObject target;
+    private Vector3 startPos;
+
+    public AnimationCurve curve;
+
+    float x, y;
+    float wind, oldWind, newWind;
+    float desiredTime = 1;
+    float elapsedTime;
+
+    bool move = false;
+    bool locked = false;
     void Start()
     {
-        y = 3.33f;
+        StartCoroutine("Wind");
+        startPos = transform.position;
+        y = transform.position.y;
         dand = GameObject.FindGameObjectWithTag("Dandelion").GetComponent<Dandelion>();
+        target = GameObject.FindGameObjectWithTag("target");
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (transform.position != target.transform.position && !locked) {
+            elapsedTime += Time.deltaTime;
+            transform.position = Vector3.Lerp(startPos, target.transform.position, curve.Evaluate(elapsedTime / desiredTime));
+            x = transform.position.x;
+            y = transform.position.y;
+            move = false;
+            }
+        else {
+            locked = true;
+            move = true;
+        }
         
-        y -= gravity * (Time.time - dand.offsetTime) * .001f;
-        x += Input.GetAxis("Horizontal")*speed*Time.deltaTime;
-        transform.position = new Vector2(x, y);
+        if (move) {
+            y -= gravity * (Time.time - dand.offsetTime) * .001f;
+            x += (Input.GetAxis("Horizontal") * speed * Time.deltaTime) + wind;
+            transform.position = new Vector2(x, y);
+        }
 
     }
 
+    IEnumerator Wind() {
+        newWind = Random.Range(-.003f, .003f);
+        float t = Random.Range(.5f, 2);
+        wind = Mathf.Lerp(oldWind, newWind, curve.Evaluate(t));
+        yield return new WaitForSeconds(t+.1f);
+        StartCoroutine("Wind");    
+    }
     private void OnTriggerEnter(Collider other)
     {
         dand.offsetTime = Time.time;

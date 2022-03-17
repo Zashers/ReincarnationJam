@@ -10,6 +10,7 @@ TagManager:
   - ExUp
   - ExDown
   - dc
+  - target
   layers:
   - Default
   - TransparentFX
