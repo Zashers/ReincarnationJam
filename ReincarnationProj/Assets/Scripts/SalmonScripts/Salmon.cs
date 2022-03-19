@@ -32,7 +32,7 @@ public class Salmon : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.UpArrow)) {
-            y += power;
+            y += power * Time.deltaTime;
             strokes++;
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow)) {
