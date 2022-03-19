@@ -6,6 +6,8 @@ public class DialogueController : MonoBehaviour
 {
     // Start is called before the first frame update
 
+    public FadeScript fs;
+    
     public GameObject eLeft, eDown, eUp, eRight, left, down, up, right;
     public GameObject[] leftArrows, rightArrows;
     public int[] sequence;
@@ -13,19 +15,24 @@ public class DialogueController : MonoBehaviour
     public float noteTime;
     public int score;
 
+    public bool missed;
+
     private AudioSource audioL;
     int i = 0;
     
     void Start()
     {
         audioL = GetComponent<AudioSource>();
+        fs = GameObject.Find("Fader").GetComponent<FadeScript>();
         StartCoroutine("Dialogue");
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (missed) {
+            fs.FadeOut("Salmon");
+        }
     }
 
     public void Play() {
@@ -78,5 +85,7 @@ public class DialogueController : MonoBehaviour
             }
             yield return new WaitForSeconds(noteTime);
         }
+        yield return new WaitForSeconds(5);
+        fs.FadeOut("Apotheosis");
     }
 }

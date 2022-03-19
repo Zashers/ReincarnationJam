@@ -64,3 +64,6 @@ TagManager:
   - name: Primary
     uniqueID: 662086391
     locked: 0
+  - name: Fade
+    uniqueID: 2321888693
+    locked: 0

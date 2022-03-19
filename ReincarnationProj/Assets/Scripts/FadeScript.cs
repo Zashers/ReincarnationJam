@@ -24,7 +24,7 @@ public class FadeScript : MonoBehaviour
 
     }
 
-   public void FadeIn() {
+    void FadeIn() {
         StartCoroutine(fadeInCoroutine());
     }
 
@@ -34,9 +34,7 @@ public class FadeScript : MonoBehaviour
             black.color -= new Color(0, 0, 0, inStep);
             yield return new WaitForSeconds(inStepTime);
             StartCoroutine(fadeInCoroutine());
-            print(black.color.a);
         }
-        //print(black.color.a);
     }
 
     public void FadeOut(string scene)

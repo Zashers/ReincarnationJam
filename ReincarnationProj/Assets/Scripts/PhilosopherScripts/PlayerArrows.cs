@@ -25,8 +25,8 @@ public class PlayerArrows : MonoBehaviour
                     hit = true;
                     dc.Play();
                 }
-                else { 
-                //    dc.score--; 
+                else {
+                    dc.missed = true; 
                 }
             }
         }
@@ -39,11 +39,12 @@ public class PlayerArrows : MonoBehaviour
                     hit = true;
                     dc.Play();
                 }
-                else { 
-               //     dc.score--; 
+                else {
+                    dc.missed = true;
                 }
             }
         }
+        
         if (up)
         {
             if (Input.GetKeyDown(KeyCode.UpArrow))
@@ -53,20 +54,25 @@ public class PlayerArrows : MonoBehaviour
                     hit = true;
                     dc.Play();
                 }
-                else { //dc.score--;
-                       }
+                else {
+                    dc.missed = true;
+                }
             }
+        }
+
         if (down)
+        {
+            if (Input.GetKeyDown(KeyCode.DownArrow))
             {
-                if (Input.GetKeyDown(KeyCode.DownArrow))
+                if (timed)
                 {
-                    if (timed) { 
-                        dc.score++;
-                        hit = true;
-                        dc.Play();
-                    }
-                    else { //dc.score--;
-                           }
+                    dc.score++;
+                    hit = true;
+                    dc.Play();
+                }
+                else
+                {
+                    dc.missed = true;
                 }
             }
         }
