@@ -33,8 +33,6 @@ public class Dandelion : MonoBehaviour
             Instantiate(seed, transform.position, Quaternion.identity);
             landSpot = Random.Range(-5.5f, 5.5f);
             startSpot = landing.transform.position;
-            print(landing.transform.position.x);
-            print(landSpot);
             elapsedTime = 0;
         }
         if (landing.transform.position.x != landSpot)

@@ -21,6 +21,7 @@ public class SeedBehaviour : MonoBehaviour
 
     bool move = false;
     bool locked = false;
+    bool stop = false;
     void Start()
     {
         StartCoroutine("Wind");
@@ -45,12 +46,15 @@ public class SeedBehaviour : MonoBehaviour
             move = true;
         }
 
-        if (move)
+        if (move && !stop)
         {
             y -= gravity * (Time.timeSinceLevelLoad - dand.offsetTime) * .001f;
             x += (Input.GetAxis("Horizontal") * speed * Time.deltaTime) + wind;
             x = Mathf.Clamp(x, -5.7f, 5.3f);
             transform.position = new Vector2(x, y);
+        }
+        if (!move) {
+            print("What bro?");
         }
     }
 
@@ -69,6 +73,7 @@ public class SeedBehaviour : MonoBehaviour
         if (other.gameObject.tag == "landing")
         {
             dand.change = true;
+            stop = true;
         }
         else if (other.gameObject.tag == "Water")
         {
