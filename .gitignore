@@ -32,7 +32,7 @@ sysinfo.txt
 *.user
 *.userprefs
 *.pidb
-*.log
+*.log*
 .DS_Store
 
 ###
