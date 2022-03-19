@@ -16,7 +16,9 @@ public class DialogueController : MonoBehaviour
     public int score;
 
     public bool missed;
-
+    public bool yourTurn;
+    bool locked = false;
+    
     private AudioSource audioL;
     int i = 0;
     
@@ -30,21 +32,27 @@ public class DialogueController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (missed) {
-            fs.FadeOut("Salmon");
+        if (missed && !locked) {
+            locked = true;
+            StartCoroutine("End");
         }
     }
 
+    IEnumerator End() {
+        yield return new WaitForSeconds(1);
+        fs.FadeOut("Salmon");
+    }
     public void Play() {
         audioL.Play();
     }
     IEnumerator Dialogue() {
-
+        yourTurn = false;
         for (i = 0; i < sequence.Length; i++)
         {
             float x = sequence[i];
             switch (x)
             {
+               
                 case 1:
                     Instantiate(eLeft, new Vector2(rightArrows[0].transform.position.x, transform.position.y), left.transform.rotation);
                     break;
@@ -63,6 +71,7 @@ public class DialogueController : MonoBehaviour
             yield return new WaitForSeconds(noteTime);
         }
         yield return new WaitForSeconds(2);
+        yourTurn = true;
         for (i = 0; i < sequence.Length; i++)
         {
             float x = sequence[i];

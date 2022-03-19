@@ -56,7 +56,10 @@ public class Salmon : MonoBehaviour
         if (transform.position.y >= 5) {
             phi = true;
         }
-
+        if (transform.position.y <= -5.5) {
+            seed = true;
+        }
+        
         if (phi && !plock) {
             plock = true;
             fs.FadeOut("Philosopher");
@@ -70,7 +73,7 @@ public class Salmon : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        print(collision.gameObject.name);
+        
         if (collision.gameObject.tag == "Rock")
         {
             seed = true; 

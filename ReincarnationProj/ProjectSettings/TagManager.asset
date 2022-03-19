@@ -15,6 +15,7 @@ TagManager:
   - Top
   - Rock
   - Water
+  - Miss
   layers:
   - Default
   - TransparentFX
