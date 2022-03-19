@@ -18,7 +18,7 @@ public class PlayerArrows : MonoBehaviour
     {
         if (left)
         {
-            if (Input.GetKeyDown(KeyCode.LeftArrow))  
+            if (Input.GetKeyDown(KeyCode.LeftArrow) && dc.yourTurn)  
             {
                 if (timed) { 
                     dc.score++;
@@ -32,7 +32,7 @@ public class PlayerArrows : MonoBehaviour
         }
         if (right)
         {
-            if (Input.GetKeyDown(KeyCode.RightArrow))
+            if (Input.GetKeyDown(KeyCode.RightArrow) && dc.yourTurn)
             {
                 if (timed) { 
                     dc.score++;
@@ -47,7 +47,7 @@ public class PlayerArrows : MonoBehaviour
         
         if (up)
         {
-            if (Input.GetKeyDown(KeyCode.UpArrow))
+            if (Input.GetKeyDown(KeyCode.UpArrow) && dc.yourTurn)
             {
                 if (timed) { 
                     dc.score++;
@@ -62,7 +62,7 @@ public class PlayerArrows : MonoBehaviour
 
         if (down)
         {
-            if (Input.GetKeyDown(KeyCode.DownArrow))
+            if (Input.GetKeyDown(KeyCode.DownArrow)&& dc.yourTurn)
             {
                 if (timed)
                 {
@@ -80,7 +80,7 @@ public class PlayerArrows : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        timed = true;
+            timed = true;
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
