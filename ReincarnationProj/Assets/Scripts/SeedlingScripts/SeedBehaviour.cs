@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+
 public class SeedBehaviour : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -21,7 +21,7 @@ public class SeedBehaviour : MonoBehaviour
 
     bool move = false;
     bool locked = false;
-    bool change = false;
+    bool stop = false;
     void Start()
     {
         StartCoroutine("Wind");
@@ -45,14 +45,17 @@ public class SeedBehaviour : MonoBehaviour
             locked = true;
             move = true;
         }
-        
-        if (move) {
+
+        if (move && !stop)
+        {
             y -= gravity * (Time.timeSinceLevelLoad - dand.offsetTime) * .001f;
             x += (Input.GetAxis("Horizontal") * speed * Time.deltaTime) + wind;
             x = Mathf.Clamp(x, -5.7f, 5.3f);
             transform.position = new Vector2(x, y);
         }
-
+        if (!move) {
+            print("What bro?");
+        }
     }
 
     IEnumerator Wind() {
@@ -64,17 +67,13 @@ public class SeedBehaviour : MonoBehaviour
         StartCoroutine("Wind");    
     }
 
-    IEnumerator Change()
-    {
-        yield return new WaitForSeconds(1);
-        SceneManager.LoadScene("Salmon");
-    }
+   
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "landing")
         {
-
-            SceneManager.LoadScene("Salmon");
+            dand.change = true;
+            stop = true;
         }
         else if (other.gameObject.tag == "Water")
         {
