@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class Dandelion : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -17,6 +17,8 @@ public class Dandelion : MonoBehaviour
     Vector2 startSpot;
 
     bool locked;
+    public bool change = false;
+
     void Start()
     {
         pop = true;
@@ -41,6 +43,14 @@ public class Dandelion : MonoBehaviour
             float x = Mathf.Lerp(startSpot.x, landSpot, curve.Evaluate(elapsedTime / Duration));
             landing.transform.position = new Vector2(x, landing.transform.position.y);
         }
+        if (change) {
+            StartCoroutine("Change");
+        }
+    }
 
+    IEnumerator Change() {
+        yield return new WaitForSeconds(1);
+
+        SceneManager.LoadScene("Salmon");
     }
 }
