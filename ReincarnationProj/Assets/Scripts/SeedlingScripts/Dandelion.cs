@@ -18,11 +18,14 @@ public class Dandelion : MonoBehaviour
 
     bool locked;
     public bool change = false;
+    public bool bruh = false;
+    private FadeScript fs;
 
     void Start()
     {
         pop = true;
         landing = GameObject.Find("Rock");
+        fs = GameObject.Find("Fader").GetComponent<FadeScript>();
     }
 
     // Update is called once per frame
@@ -41,14 +44,9 @@ public class Dandelion : MonoBehaviour
             float x = Mathf.Lerp(startSpot.x, landSpot, curve.Evaluate(elapsedTime / Duration));
             landing.transform.position = new Vector2(x, landing.transform.position.y);
         }
-        if (change) {
-            StartCoroutine("Change");
+        if (change && !bruh) {
+            bruh = true;
+            fs.FadeOut("Salmon");
         }
-    }
-
-    IEnumerator Change() {
-        yield return new WaitForSeconds(1);
-
-        SceneManager.LoadScene("Salmon");
     }
 }

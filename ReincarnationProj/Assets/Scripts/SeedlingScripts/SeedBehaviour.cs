@@ -53,9 +53,6 @@ public class SeedBehaviour : MonoBehaviour
             x = Mathf.Clamp(x, -5.7f, 5.3f);
             transform.position = new Vector2(x, y);
         }
-        if (!move) {
-            print("What bro?");
-        }
     }
 
     IEnumerator Wind() {
