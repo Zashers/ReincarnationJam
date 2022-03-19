@@ -34,9 +34,6 @@ public class Salmon : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow)) {
             y += power;
             strokes++;
-            if ((strokes % 2) == 0) {
-                transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
-            }
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow)) {
             if (i!=0) {
