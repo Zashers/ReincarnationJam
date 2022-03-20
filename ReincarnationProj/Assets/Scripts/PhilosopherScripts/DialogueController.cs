@@ -11,7 +11,7 @@ public class DialogueController : MonoBehaviour
     public Animator inAnim;
 
 
-    public GameObject eLeft, eDown, eUp, eRight, left, down, up, right;
+    public GameObject eLeft, eDown, eUp, eRight, left, down, up, right, red;
     public GameObject[] leftArrows, rightArrows;
     public int[] sequence1,sequence2, sequence3;
 
@@ -22,20 +22,32 @@ public class DialogueController : MonoBehaviour
     public bool missed;
     public bool yourTurn;
     bool locked = false;
+    bool started = false;
     
     private AudioSource audioL;
+    private Music ms;
     int i = 0;
     int j = 0;
+
+    float startTime;
     void Start()
     {
+        ms = GameObject.Find("Music").GetComponent<Music>();
+       // startTime = ms.beatTime;
         audioL = GetComponent<AudioSource>();
         fs = GameObject.Find("Fader").GetComponent<FadeScript>();
-        StartCoroutine("Dialogue");
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        float bruh = Mathf.Round((Time.time) * 100)/100;
+        if ((bruh % .66 <= 0.1f) && !started)
+        {
+            StartCoroutine("Dialogue");
+            started = true;
+        }
         if ((score > 3) && !locked) {
             locked = true;
             StartCoroutine("End");
@@ -46,9 +58,7 @@ public class DialogueController : MonoBehaviour
         yield return new WaitForSeconds(1);
         fs.FadeOut("Salmon");
     }
-    public void Play() {
-        audioL.Play();
-    }
+   
     IEnumerator Dialogue() {
         for (j = 0; j < 3; j++)
         {
@@ -88,7 +98,7 @@ public class DialogueController : MonoBehaviour
                 yield return new WaitForSeconds(noteTime);
             }
    
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(3.3f);
             inAnim.SetBool("Idle", true);
             inAnim.SetBool("Left", false);
             inAnim.SetBool("Up", false);
@@ -118,7 +128,7 @@ public class DialogueController : MonoBehaviour
                 yield return new WaitForSeconds(noteTime);
             }
      
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(3.3f);
             phAnim.SetBool("Idle", true);
             phAnim.SetBool("Left", false);
             phAnim.SetBool("Up", false);
