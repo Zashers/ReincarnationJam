@@ -78,7 +78,7 @@ public class ExArrow : MonoBehaviour
                 default:
                     break;
             }
-            dc.Play();
+            
             Destroy(gameObject);
         }
     }

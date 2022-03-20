@@ -26,7 +26,7 @@ public class PlayerArrows : MonoBehaviour
                 if (timed) { 
                     
                     hit = true;
-                    dc.Play();
+                    
                     Anim.SetBool("Left", true);
                     Anim.SetBool("Up", false);
                     Anim.SetBool("Right", false);
@@ -46,7 +46,7 @@ public class PlayerArrows : MonoBehaviour
                 if (timed) { 
                     
                     hit = true;
-                    dc.Play();
+                    
                     Anim.SetBool("Left", false);
                     Anim.SetBool("Up", false);
                     Anim.SetBool("Right", true);
@@ -67,7 +67,7 @@ public class PlayerArrows : MonoBehaviour
                 if (timed) { 
                    
                     hit = true;
-                    dc.Play();
+                 
                     Anim.SetBool("Left", false);
                     Anim.SetBool("Up", true);
                     Anim.SetBool("Right", false);
@@ -89,7 +89,7 @@ public class PlayerArrows : MonoBehaviour
                 {
                     
                     hit = true;
-                    dc.Play();
+                
                     Anim.SetBool("Left", false);
                     Anim.SetBool("Up", false);
                     Anim.SetBool("Right", false);
