@@ -13,7 +13,8 @@ public class SeedBehaviour : MonoBehaviour
     private Vector3 startPos;
 
     public AnimationCurve curve;
-  
+
+    public float rotSpeed = 0;
     float x, y;
     float wind, oldWind, newWind;
     float desiredTime = 1;
@@ -53,6 +54,26 @@ public class SeedBehaviour : MonoBehaviour
             x = Mathf.Clamp(x, -5.7f, 5.3f);
             transform.position = new Vector2(x, y);
         }
+
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
+            rotSpeed = rotSpeed + 0.05f;
+        }
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        {
+            rotSpeed = rotSpeed - 0.05f;
+        }
+
+        if (Input.GetKey(KeyCode.D) == false && Input.GetKey(KeyCode.RightArrow) == false && Input.GetKey(KeyCode.A) == false && Input.GetKey(KeyCode.LeftArrow) == false) {
+            if (rotSpeed > 0)
+            {
+                rotSpeed = rotSpeed - 0.05f;
+            }
+            else if (rotSpeed < 0) {
+                rotSpeed = rotSpeed + 0.05f;
+            }
+        }
+        rotSpeed = Mathf.Clamp(rotSpeed, -23, 23);
+        transform.rotation = Quaternion.Euler(0, 0, rotSpeed);
     }
 
     IEnumerator Wind() {
