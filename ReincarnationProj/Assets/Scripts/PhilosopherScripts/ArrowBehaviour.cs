@@ -30,6 +30,7 @@ public class ArrowBehaviour : MonoBehaviour
         if (collision.gameObject.name == "Box")
         {
             dc.score++;
+            dc.red();
             print("bruh");
         }
     }

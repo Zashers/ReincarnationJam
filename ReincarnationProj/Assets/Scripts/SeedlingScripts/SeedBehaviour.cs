@@ -81,7 +81,7 @@ public class SeedBehaviour : MonoBehaviour
     }
 
     IEnumerator Wind() {
-        newWind = Random.Range(-.5f, .5f);
+        newWind = Random.Range(-.3f, .3f);
         float t = Random.Range(.5f, 2);
         wind = Mathf.Lerp(oldWind, newWind, curve.Evaluate(t));
         yield return new WaitForSeconds(t+.1f);

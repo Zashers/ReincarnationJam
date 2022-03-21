@@ -11,7 +11,7 @@ public class DialogueController : MonoBehaviour
     public Animator inAnim;
 
 
-    public GameObject eLeft, eDown, eUp, eRight, left, down, up, right, red;
+    public GameObject eLeft, eDown, eUp, eRight, left, down, up, right, redScreen;
     public GameObject[] leftArrows, rightArrows;
     public int[] sequence1,sequence2, sequence3;
 
@@ -54,6 +54,15 @@ public class DialogueController : MonoBehaviour
         }
     }
 
+    public void red() {
+        StartCoroutine("Red");
+    }
+
+    IEnumerator Red() {
+        redScreen.SetActive(true);
+        yield return new WaitForSeconds(.1f);
+        redScreen.SetActive(false);
+    }
     IEnumerator End() {
         yield return new WaitForSeconds(1);
         fs.FadeOut("Salmon");

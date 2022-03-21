@@ -55,6 +55,8 @@ public class EndController : MonoBehaviour
         }
         else
         {
+            yield return new WaitForSeconds(2);
+
             text.SetActive(true);
         }
 

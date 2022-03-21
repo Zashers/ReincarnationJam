@@ -6630,7 +6630,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3542706371171561251, guid: f1f66b222af93dc4785a5bf254d5f171, type: 3}
       propertyPath: power
-      value: 0.5
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3542706371171561251, guid: f1f66b222af93dc4785a5bf254d5f171, type: 3}
       propertyPath: gravity

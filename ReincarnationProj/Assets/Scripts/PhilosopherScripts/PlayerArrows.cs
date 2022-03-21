@@ -36,6 +36,7 @@ public class PlayerArrows : MonoBehaviour
                 }
                 else {
                     dc.score++;
+                    dc.red();
                 }
             }
         }
@@ -56,6 +57,7 @@ public class PlayerArrows : MonoBehaviour
                 }
                 else {
                     dc.score++;
+                    dc.red();
                 }
             }
         }
@@ -77,6 +79,7 @@ public class PlayerArrows : MonoBehaviour
                 }
                 else {
                     dc.score++;
+                    dc.red();
                 }
             }
         }
@@ -100,6 +103,7 @@ public class PlayerArrows : MonoBehaviour
                 else
                 {
                     dc.score++;
+                    dc.red();
                 }
             }
         }

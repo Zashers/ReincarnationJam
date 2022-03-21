@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class Music : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -22,7 +22,9 @@ public class Music : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        if (SceneManager.GetActiveScene().name == "Apotheosis") {
+            GetComponent<AudioSource>().loop = false;
+        }
         beatTime = Time.time;
     }
 }
