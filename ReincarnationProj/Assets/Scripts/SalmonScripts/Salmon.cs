@@ -34,14 +34,14 @@ public class Salmon : MonoBehaviour
     void Update()
     {
         if ((Input.GetKeyDown(KeyCode.UpArrow) && !dead) || (Input.GetKeyDown(KeyCode.W) && !dead)) {
-            y += power * Time.deltaTime;
-            GetComponent<AudioSource>().Play();
+            y += power * Time.smoothDeltaTime;
+            
             strokes++;
         }
         if ((Input.GetKeyDown(KeyCode.LeftArrow) && !dead) || (Input.GetKeyDown(KeyCode.A) && !dead)) {
             if (i!=0) {
                 i--;
-                GetComponent<AudioSource>().Play();
+                
             } 
         }
         if ((Input.GetKeyDown(KeyCode.RightArrow) && !dead) || (Input.GetKeyDown(KeyCode.D) && !dead))
@@ -49,12 +49,12 @@ public class Salmon : MonoBehaviour
             if (i != points.Length-1)
             {
                 i++;
-                GetComponent<AudioSource>().Play();
+                
             }
         }
 
         x = points[i];
-        y -= gravity * Time.deltaTime;
+        y -= gravity * Time.smoothDeltaTime;
         
         transform.position = new Vector2(x, y);
 

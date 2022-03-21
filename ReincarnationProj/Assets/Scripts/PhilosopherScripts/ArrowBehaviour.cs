@@ -21,7 +21,7 @@ public class ArrowBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        y += speed * .1f * Time.deltaTime; 
+        y += speed * .1f * Time.smoothDeltaTime; 
         transform.position = new Vector2(transform.position.x, y); //Controls upward movement of arrow and initial position
     }
 

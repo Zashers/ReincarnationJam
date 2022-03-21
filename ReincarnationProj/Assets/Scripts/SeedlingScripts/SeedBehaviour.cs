@@ -49,8 +49,8 @@ public class SeedBehaviour : MonoBehaviour
 
         if (move && !stop)
         {
-            y -= gravity * (Time.timeSinceLevelLoad - dand.offsetTime) * .001f;
-            x += (Input.GetAxis("Horizontal") * speed * Time.deltaTime) + wind;
+            y -= gravity * (Time.timeSinceLevelLoad - dand.offsetTime) * .001f * Time.smoothDeltaTime;
+            x += ((Input.GetAxis("Horizontal") * speed) + wind) * Time.smoothDeltaTime;
             x = Mathf.Clamp(x, -5.7f, 5.3f);
             transform.position = new Vector2(x, y);
         }
@@ -77,7 +77,7 @@ public class SeedBehaviour : MonoBehaviour
     }
 
     IEnumerator Wind() {
-        newWind = Random.Range(-.003f, .003f);
+        newWind = Random.Range(-1.2f, 1.2f);
         float t = Random.Range(.5f, 2);
         wind = Mathf.Lerp(oldWind, newWind, curve.Evaluate(t));
         yield return new WaitForSeconds(t+.1f);

@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dand: {fileID: 0}
-  gravity: 0.3
+  gravity: 60
   speed: 0.5
   target: {fileID: 0}
   curve:
