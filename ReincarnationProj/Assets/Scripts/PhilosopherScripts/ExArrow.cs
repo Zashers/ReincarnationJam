@@ -42,7 +42,7 @@ public class ExArrow : MonoBehaviour
     void Update()
     {
 
-        y += speed * .1f * Time.smoothDeltaTime; ;
+        y += speed * .1f * Time.smoothDeltaTime; 
         transform.position = new Vector2(transform.position.x, y);
         if (transform.position.y >= target.transform.position.y) {
             switch (dir)

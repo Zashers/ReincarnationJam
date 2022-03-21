@@ -34,7 +34,7 @@ public class Salmon : MonoBehaviour
     void Update()
     {
         if ((Input.GetKeyDown(KeyCode.UpArrow) && !dead) || (Input.GetKeyDown(KeyCode.W) && !dead)) {
-            y += power * Time.smoothDeltaTime;
+            y += power;
             
             strokes++;
         }

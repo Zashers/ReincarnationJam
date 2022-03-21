@@ -98,7 +98,7 @@ public class DialogueController : MonoBehaviour
                 yield return new WaitForSeconds(noteTime);
             }
    
-            yield return new WaitForSeconds(3.3f);
+            yield return new WaitForSeconds(3.96f);
             inAnim.SetBool("Idle", true);
             inAnim.SetBool("Left", false);
             inAnim.SetBool("Up", false);
@@ -128,7 +128,7 @@ public class DialogueController : MonoBehaviour
                 yield return new WaitForSeconds(noteTime);
             }
      
-            yield return new WaitForSeconds(3.3f);
+            yield return new WaitForSeconds(3.96f);
             phAnim.SetBool("Idle", true);
             phAnim.SetBool("Left", false);
             phAnim.SetBool("Up", false);

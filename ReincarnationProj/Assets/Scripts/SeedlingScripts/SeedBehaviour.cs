@@ -23,6 +23,9 @@ public class SeedBehaviour : MonoBehaviour
     bool move = false;
     bool locked = false;
     bool stop = false;
+
+    float Timetotal;
+    int iteration = 0;
     void Start()
     {
         StartCoroutine("Wind");
@@ -35,6 +38,7 @@ public class SeedBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (transform.position != target.transform.position && !locked) {
             elapsedTime += Time.deltaTime;
             transform.position = Vector3.Lerp(startPos, target.transform.position, curve.Evaluate(elapsedTime / desiredTime));
@@ -77,7 +81,7 @@ public class SeedBehaviour : MonoBehaviour
     }
 
     IEnumerator Wind() {
-        newWind = Random.Range(-1.2f, 1.2f);
+        newWind = Random.Range(-.5f, .5f);
         float t = Random.Range(.5f, 2);
         wind = Mathf.Lerp(oldWind, newWind, curve.Evaluate(t));
         yield return new WaitForSeconds(t+.1f);
